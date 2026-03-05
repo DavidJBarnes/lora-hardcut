@@ -1,0 +1,35 @@
+# Dataset configuration for HARDCUT LoRA training
+# WAN 2.2 I2V - 61 frames @ 480w x 832h @ 16fps
+
+[general]
+# Resolution format is [width, height]
+# Your videos are 480w x 832h (portrait), so: width=480, height=832
+resolution = [480, 832]
+caption_extension = ".txt"
+batch_size = 1
+enable_bucket = false      # Disable bucketing since all videos are same resolution
+bucket_no_upscale = true
+
+[[datasets]]
+# Path to your video files (each video needs a matching .txt caption file)
+video_directory = "/home/david/projects/lora-hardcut/dataset/videos"
+
+# Path where latent cache will be stored (auto-created)
+cache_directory = "/home/david/projects/lora-hardcut/dataset/cache"
+
+# Your videos are 61 frames (61 = 15*4+1, valid for WAN)
+target_frames = [61]
+
+# Frame extraction method:
+# - "full": Use all frames (recommended for your pre-cut videos)
+# - "head": Extract first N frames
+# - "chunk": Split video into N-frame chunks
+# - "slide": Extract with stride
+frame_extraction = "full"
+
+# Number of times to repeat dataset (increase if you have few videos)
+# If you have 10 videos and num_repeats=2, effective dataset = 20 videos
+num_repeats = 1
+
+# Optional: If your videos are at different FPS and need conversion to 16fps
+# source_fps = 30.0

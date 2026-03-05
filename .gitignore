@@ -1,0 +1,23 @@
+# Dataset videos and captions
+dataset/videos/
+dataset/cache/
+
+# Training outputs
+output/
+logs/
+
+# musubi-tuner clone
+musubi-tuner/
+
+# Runtime scripts generated for specific runs
+run_combined.sh
+run_separate.sh
+run_training.sh
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# OS
+.DS_Store
